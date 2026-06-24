@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Way Academy - Excellence in Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #00697e;
+            --secondary: #facc15;
+            --accent: #0a9396;
+            --light: #f8f9fa;
+            --dark: #005f73;
+            --text: #333333;
+            --text-light: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 0.7rem 2rem;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            left: 50%;
+            bottom: 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover:after, nav ul li a.active:after {
+            width: 80%;
+            left: 10%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 95, 115, 0.85), rgba(0, 95, 115, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center/cover;
+            color: white;
+            padding: 0 1rem;
+            margin-top: 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #e3b013;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.4);
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background: var(--primary);
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: -1px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .stat-text {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Page Sections */
+        .page-section {
+            padding: 6rem 2rem;
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Programs Section */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .program-card-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .program-card-content {
+            padding: 1.8rem;
+        }
+        
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .program-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .program-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .program-features li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .program-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Admissions Section */
+        .admissions-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .requirements {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .requirement-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .requirement-item i {
+            color: var(--secondary);
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.8rem;
+        }
+        
+        .contact-detail i {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 105, 126, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav ul.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul li {
+                margin: 0.8rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .page-section {
+                padding: 4rem 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Featured Programs Section on Homepage */
+        .featured-programs {
+            padding: 5rem 2rem;
+            background: #f8f9fa;
+            margin-top: 2rem;
+        }
+        
+        .featured-programs .program-grid {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <h1>Bright<span>Way</span> Academy</h1>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="programs">Programs</a></li>
+                <li><a href="#" class="nav-link" data-page="admissions">Admissions</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Home Section -->
+    <section class="page-section active" id="home">
+        <div class="hero">
+            <div class="hero-content">
+                <h2>Ignite Your Future at Bright Way Academy</h2>
+                <p>Empowering students with innovative education to shine brightly in a changing world. Our holistic approach nurtures academic excellence, creativity, and character development.</p>
+                <a href="#" class="cta-button nav-link" data-page="admissions">Start Your Journey Today</a>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-text">College Acceptance Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12:1</div>
+                <div class="stat-text">Student-Teacher Ratio</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">25+</div>
+                <div class="stat-text">Extracurricular Programs</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">#5</div>
+                <div class="stat-text">State Ranking</div>
+            </div>
+        </div>
+        
+        <!-- Quick Info Section -->
+        <div class="container" style="padding-top: 4rem; padding-bottom: 2rem;">
+            <div class="section-title">
+                <h2>Why Choose Bright Way Academy?</h2>
+                <p>We provide a nurturing environment where students can thrive academically, socially, and personally.</p>
+            </div>
+            
+            <div class="program-grid">
+                <div class="program-card">
+                    <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-card-content">
+                        <h3>Academic Excellence</h3>
+                        <p>Our rigorous curriculum is designed to challenge students and prepare them for top universities.</p>
+                        <ul class="program-features">
+                            <li>Advanced Placement courses</li>
+                            <li>Research opportunities</li>
+                            <li>STEM-focused learning</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-card-content">
+                        <h3>Holistic Development</h3>
+                        <p>We focus on developing well-rounded individuals with strong character and leadership skills.</p>
+                        <ul class="program-features">
+                            <li>Leadership programs</li>
+                            <li>Community service</li>
+                            <li>Arts and athletics</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-card-content">
+                        <h3>Innovative Learning</h3>
+                        <p>Our state-of-the-art facilities and technology-enhanced classrooms foster creativity and innovation.</p>
+                        <ul class="program-features">
+                            <li>Technology integration</li>
+                            <li>Project-based learning</li>
+                            <li>Collaborative spaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Featured Programs Section -->
+        <div class="featured-programs">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Explore Our Programs</h2>
+                    <p>Discover the diverse range of academic and extracurricular programs designed to unlock every student's potential.</p>
+                </div>
+                
+                <div class="program-grid">
+                    <div class="program-card">
+                        <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="program-card-content">
+                            <h3>Science & Innovation</h3>
+                            <p>Hands-on experimentation and cutting-edge technology in state-of-the-art laboratories.</p>
+                            <a href="#" class="nav-link" data-page="programs" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="program-card-content">
+                            <h3>Creative Arts</h3>
+                            <p>Unleash creativity through visual arts, music, theater, and creative writing programs.</p>
+                            <a href="#" class="nav-link" data-page="programs" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="program-card">
+                        <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="program-card-content">
+                            <h3>Leadership & Business</h3>
+                            <p>Develop essential skills for success with entrepreneurship and leadership courses.</p>
+                            <a href="#" class="nav-link" data-page="programs" style="color: var(--primary); font-weight: 600; display: inline-block; margin-top: 1rem;">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="cta-button nav-link" data-page="programs">View All Programs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Programs Section -->
+    <section class="page-section" id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Academic Programs</h2>
+                <p>Our diverse programs are designed to meet the unique needs and interests of every student.</p>
+            </div>
+            
+            <div class="program-grid">
+                <div class="program-card">
+                    <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-card-content">
+                        <h3>Science & Innovation</h3>
+                        <p>Our Science & Innovation program challenges students to explore the wonders of the natural world through hands-on experimentation and cutting-edge technology.</p>
+                        <ul class="program-features">
+                            <li>State-of-the-art laboratories</li>
+                            <li>Robotics and coding courses</li>
+                            <li>Partnerships with tech companies</li>
+                            <li>Annual science fair</li>
+                            <li>Research opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-card-content">
+                        <h3>Creative Arts</h3>
+                        <p>Unleash your imagination through our comprehensive arts program that includes visual arts, music, theater, and creative writing.</p>
+                        <ul class="program-features">
+                            <li>Professional art studios</li>
+                            <li>Music recording facilities</li>
+                            <li>Theater productions</li>
+                            <li>Creative writing workshops</li>
+                            <li>Artist-in-residence program</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-card-content">
+                        <h3>Leadership & Business</h3>
+                        <p>Develop essential skills for success with courses in entrepreneurship, economics, and global leadership.</p>
+                        <ul class="program-features">
+                            <li>Entrepreneurship incubator</li>
+                            <li>Mock investment portfolio</li>
+                            <li>Business plan competitions</li>
+                            <li>Leadership retreats</li>
+                            <li>Mentorship program</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-card-img" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-card-content">
+                        <h3>Humanities & Global Studies</h3>
+                        <p>Explore diverse cultures, histories, and ideas to develop critical thinking and global awareness.</p>
+                        <ul class="program-features">
+                            <li>Study abroad opportunities</li>
+                            <li>Model United Nations</li>
+                            <li>Multilingual education</li>
+                            <li>Cultural exchange programs</li>
+                            <li>Debate and public speaking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Admissions Section -->
+    <section class="page-section" id="admissions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Admissions Process</h2>
+                <p>We seek students who demonstrate academic potential, character, and a commitment to learning.</p>
+            </div>
+            
+            <div class="admissions-content">
+                <div class="admissions-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Inquiry</h4>
+                        <p>Submit an inquiry form or attend an open house to learn more about our programs.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Application</h4>
+                        <p>Complete our online application form and submit required documents.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Assessment</h4>
+                        <p>Schedule a student assessment and family interview with our admissions team.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Decision</h4>
+                        <p>Receive your admissions decision within 2-3 weeks of completing all steps.</p>
+                    </div>
+                </div>
+                
+                <div class="requirements">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Application Requirements</h3>
+                    <div class="requirements-grid">
+                        <div class="requirement-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <h4>Completed Application</h4>
+                                <p>Submit the online application form with all required information.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Academic Transcripts</h4>
+                                <p>Previous two years of academic records and any standardized test scores.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <i class="fas fa-user-edit"></i>
+                            <div>
+                                <h4>Recommendations</h4>
+                                <p>Two teacher recommendations from current or previous instructors.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="requirement-item">
+                            <i class="fas fa-pencil-alt"></i>
+                            <div>
+                                <h4>Student Essay</h4>
+                                <p>Personal statement or essay demonstrating writing skills and personality.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#" class="cta-button nav-link" data-page="contact">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you. Reach out with any questions or to schedule a campus tour.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info-card">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Get In Touch</h3>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Education Lane<br>Riyadh , LC 12345</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>057-2200-585</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>brightwayacedamy01@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Sunday - Thusday: 7:00 AM - 12:00 PM<br>Saturday: 9:00 AM - 12:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" class="form-control">
+                                <option value="">Select a subject</option>
+                                <option value="admissions">Admissions Information</option>
+                                <option value="tour">Schedule a Campus Tour</option>
+                                <option value="programs">Academic Programs</option>
+                                <option value="employment">Employment Opportunities</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bright Way Academy</h3>
+                    <p>Igniting futures through innovative education since 1995. We are committed to developing tomorrow's leaders through excellence in academics, character, and service.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="programs">Academic Programs</a></li>
+                        <li><a href="#" class="nav-link" data-page="admissions">Admissions</a></li>
+                        <li><a href="#" class="nav-link" data-page="contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">Parent Resources</a></li>
+                        <li><a href="#">Alumni Network</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Stay Connected</h3>
+                    <p>Subscribe to our newsletter for updates on events, programs, and important dates.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Bright Way Academy. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for education</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // DOM Elements
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageSections = document.querySelectorAll('.page-section');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const header = document.getElementById('header');
+        const backToTopBtn = document.querySelector('.back-to-top');
+        const contactForm = document.getElementById('contactForm');
+        
+        // Set home as active by default
+        setActivePage('home');
+        
+        // Navigation functionality
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.getAttribute('data-page');
+                
+                // Update active nav link
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show target page
+                setActivePage(targetPage);
+                
+                // Close mobile menu if open
+                navMenu.classList.remove('show');
+                
+                // Scroll to top of page
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+            this.innerHTML = navMenu.classList.contains('show') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                backToTopBtn.classList.add('show');
+            } else {
+                header.classList.remove('scrolled');
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // Back to top button
+        backToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Contact form submission
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                
+                // Show success message
+                alert(`Thank you ${name}! Your message has been sent successfully. We will respond to you at ${email} within 48 hours.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+        
+        // Function to set active page
+        function setActivePage(pageId) {
+            // Hide all page sections
+            pageSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target page
+            document.getElementById(pageId).classList.add('active');
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add some interactive hover effects to program cards
+        const programCards = document.querySelectorAll('.program-card');
+        programCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
